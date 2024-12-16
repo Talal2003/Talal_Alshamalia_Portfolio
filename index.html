@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talal Alshamalia - Creative Developer</title>
+    <meta name="description" content="Portfolio of Talal Alshamalia, a creative developer specializing in innovative digital solutions and cutting-edge technologies.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Custom Animations and Styles */
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #9333ea;
+            --bg-dark: #0f172a;
+            --text-light: #e5e7eb;
+        }
+
+        @keyframes gradient-flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes subtle-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 10px rgba(59, 130, 246, 0.5); }
+            50% { box-shadow: 0 0 25px rgba(59, 130, 246, 0.8); }
+        }
+
+        @keyframes slide-in-left {
+            from { 
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes tech-stack-slide {
+            from { transform: translateX(0); }
+            to { transform: translateX(-100%); }
+        }
+
+        body {
+            background: linear-gradient(45deg, #1e293b, #0f172a, #111827);
+            background-size: 400% 400%;
+            animation: gradient-flow 15s ease infinite;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .hero-section {
+            background: rgba(17, 24, 39, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            background: linear-gradient(145deg, rgba(31, 41, 55, 0.8), rgba(17, 24, 39, 0.6));
+        }
+
+        .project-card:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.3);
+        }
+
+        .tech-stack-container {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .tech-stack-slide {
+            display: inline-block;
+            animation: tech-stack-slide 20s linear infinite;
+        }
+
+        .profile-image {
+            animation: subtle-float 4s ease-in-out infinite, pulse-glow 3s infinite;
+            border: 3px solid rgba(59, 130, 246, 0.5);
+        }
+
+        .nav-item {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+
+        .nav-item:hover::after {
+            width: 100%;
+        }
+
+        .section-title {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            background: linear-gradient(145deg, rgba(31, 41, 55, 0.8), rgba(17, 24, 39, 0.6));
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .project-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.3);
+        }
+
+        .skill-bar {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        }
+    </style>
+</head>
+<body class="text-white min-h-screen flex flex-col bg-gray-900">
+    <header class="container mx-auto px-6 py-8">
+        <nav class="flex justify-between items-center">
+            <div class="text-2xl font-bold tracking-wide text-white"></div>
+            <div class="space-x-6 hidden md:block">
+                <a href="#home" class="nav-item text-gray-300 hover:text-white">Home</a>
+                <a href="#projects" class="nav-item text-gray-300 hover:text-white">Projects</a>
+                <a href="#skills" class="nav-item text-gray-300 hover:text-white">Skills</a>
+                <a href="#contact" class="nav-item text-gray-300 hover:text-white">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-toggle" class="text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800 absolute left-0 right-0 top-20 py-4 px-6 space-y-4">
+            <a href="#home" class="block text-gray-300 hover:text-white">Home</a>
+            <a href="#projects" class="block text-gray-300 hover:text-white">Projects</a>
+            <a href="#skills" class="block text-gray-300 hover:text-white">Skills</a>
+            <a href="#contact" class="block text-gray-300 hover:text-white">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 flex-grow">
+        <section class="hero-section flex items-center justify-between min-h-[80vh] p-12 mb-16">
+            <div class="w-2/3 space-y-6">
+                <h1 class="text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
+                    Talal Alshamalia
+                </h1>
+                <h2 class="text-3xl text-gray-300 mb-6">Creative Developer & Designer</h2>
+                <p class="text-xl text-gray-400 mb-8 leading-relaxed">
+                    Transforming ideas into elegant digital experiences through innovative design and cutting-edge technology.
+                </p>
+                <div class="space-x-4">
+                    <a href="#projects" class="inline-block bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-full transition transform hover:-translate-y-1 shadow-lg">
+                        View Projects
+                    </a>
+                    <a href="#contact" class="inline-block border-2 border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white px-8 py-4 rounded-full transition transform hover:-translate-y-1">
+                        Contact Me
+                    </a>
+                </div>
+            </div>
+            <div class="w-1/3 flex justify-center">
+                <div class="profile-image w-64 h-64 bg-gradient-to-tr from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-6xl shadow-2xl">
+                    🚀
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="my-16">
+            <h2 class="text-4xl font-bold text-center mb-12 section-title">Featured Projects</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="project-card rounded-lg p-8 text-center transform transition hover:scale-105">
+                    <div class="mb-6 flex justify-center">
+                        <i class="fas fa-network-wired text-5xl text-blue-400"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-300">Web Platform</h3>
+                    <p class="text-gray-400 mb-4">Collaborative project management tool with real-time features and advanced team coordination.</p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#" class="text-blue-400 hover:text-blue-600">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        <a href="#" class="text-blue-400 hover:text-blue-600">
+                            <i class="fas fa-external-link-alt"></i> Demo
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card rounded-lg p-8 text-center transform transition hover:scale-105">
+                    <div class="mb-6 flex justify-center">
+                        <i class="fas fa-mobile-alt text-5xl text-blue-400"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-300">Mobile App</h3>
+                    <p class="text-gray-400 mb-4">Advanced fitness tracking app with personalized AI-driven insights and comprehensive health monitoring.</p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#" class="text-blue-400 hover:text-blue-600">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        <a href="#" class="text-blue-400 hover:text-blue-600">
+                            <i class="fas fa-external-link-alt"></i> Demo
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card rounded-lg p-8 text-center transform transition hover:scale-105">
+                    <div class="mb-6 flex justify-center">
+                        <i class="fas fa-puzzle-piece text-5xl text-blue-400"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-300">Design System</h3>
+                    <p class="text-gray-400 mb-4">Comprehensive design language and component library for scalable enterprise software solutions.</p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#" class="text-blue-400 hover:text-blue-600">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        <a href="#" class="text-blue-400 hover:text-blue-600">
+                            <i class="fas fa-external-link-alt"></i> Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="my-16">
+            <h2 class="text-4xl font-bold text-center mb-12 section-title">Technical Skills</h2>
+            <div class="max-w-2xl mx-auto space-y-6">
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="text-gray-300">React & TypeScript</span>
+                        <span class="text-gray-400">90%</span>
+                    </div>
+                    <div class="bg-gray-700 rounded-full h-2.5">
+                        <div class="skill-bar h-2.5 rounded-full" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="text-gray-300">Node.js & GraphQL</span>
+                        <span class="text-gray-400">85%</span>
+                    </div>
+                    <div class="bg-gray-700 rounded-full h-2.5">
+                        <div class="skill-bar h-2.5 rounded-full" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="text-gray-300">Python & Machine Learning</span>
+                        <span class="text-gray-400">80%</span>
+                    </div>
+                    <div class="bg-gray-700 rounded-full h-2.5">
+                        <div class="skill-bar h-2.5 rounded-full" style="width: 80%"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="my-16 relative">
+            <div class="container mx-auto px-6 relative z-10">
+                <h2 class="text-4xl font-bold text-center mb-12 section-title">Contact Me</h2>
+                <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 bg-gray-800/60 backdrop-blur-lg rounded-2xl overflow-hidden shadow-2xl border border-gray-700/50">
+                    <div class="p-12 bg-gradient-to-br from-blue-900/30 to-purple-900/30">
+                        <h3 class="text-2xl font-semibold mb-6 text-blue-200">Get in Touch</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-center space-x-4">
+                                <div class="bg-blue-600/20 p-3 rounded-full">
+                                    <i class="fas fa-envelope text-blue-400 text-2xl"></i>
+                                </div>
+                                <div>
+                                    <span class="text-gray-400 block text-sm">Email</span>
+                                    <a href="mailto:talal@alshamalia.net" class="text-blue-300 hover:text-blue-200 text-lg transition">
+                                        talal@alshamalia.net
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="bg-blue-600/20 p-3 rounded-full">
+                                    <i class="fas fa-phone text-blue-400 text-2xl"></i>
+                                </div>
+                                <div>
+                                    <span class="text-gray-400 block text-sm">Phone</span>
+                                    <a href="tel:+4197504877" class="text-blue-300 hover:text-blue-200 text-lg transition">
+                                        (419) 750-4877
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="mt-6 flex space-x-6">
+                                <a href="#" class="text-gray-400 hover:text-blue-400 transition transform hover:scale-110">
+                                    <i class="fab fa-linkedin text-3xl"></i>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-blue-400 transition transform hover:scale-110">
+                                    <i class="fab fa-github text-3xl"></i>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-blue-400 transition transform hover:scale-110">
+                                    <i class="fab fa-twitter text-3xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-12">
+                        <h3 class="text-2xl font-semibold mb-6 text-blue-200">Send a Message</h3>
+                        <form class="space-y-6">
+                            <div class="relative">
+                                <input 
+                                    type="text" 
+                                    placeholder="Your Name" 
+                                    class="w-full px-4 py-3 bg-gray-700 rounded-lg text-white 
+                                           focus:outline-none focus:ring-2 focus:ring-blue-500 
+                                           transition duration-300 
+                                           placeholder-gray-500"
+                                >
+                                <i class="fas fa-user absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
+                            </div>
+                            <div class="relative">
+                                <input 
+                                    type="email" 
+                                    placeholder="Your Email" 
+                                    class="w-full px-4 py-3 bg-gray-700 rounded-lg text-white 
+                                           focus:outline-none focus:ring-2 focus:ring-blue-500 
+                                           transition duration-300 
+                                           placeholder-gray-500"
+                                >
+                                <i class="fas fa-envelope absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
+                            </div>
+                            <div class="relative">
+                                <textarea 
+                                    placeholder="Hey Talal, love the website! I'd like to chat about some opportunities you might like!" 
+                                    rows="4" 
+                                    class="w-full px-4 py-3 bg-gray-700 rounded-lg text-white 
+                                           focus:outline-none focus:ring-2 focus:ring-blue-500 
+                                           transition duration-300 
+                                           placeholder-gray-500"
+                                ></textarea>
+                                <i class="fas fa-comment-dots absolute right-4 top-4 text-gray-500"></i>
+                            </div>
+                            <button 
+                                type="submit" 
+                                class="w-full bg-gradient-to-r from-blue-600 to-purple-600 
+                                       text-white py-3 rounded-lg 
+                                       hover:from-blue-700 hover:to-purple-700 
+                                       transition duration-300 
+                                       transform hover:scale-[1.02] 
+                                       flex items-center justify-center space-x-2"
+                            >
+                                <i class="fas fa-paper-plane"></i>
+                                <span>Send Message</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tech-stack" class="my-16 overflow-hidden">
+            <div class="tech-stack-container">
+                <div class="tech-stack-slide inline-block space-x-12 text-gray-400">
+                    <span>React</span>
+                    <span>TypeScript</span>
+                    <span>Node.js</span>
+                    <span>Python</span>
+                    <span>Docker</span>
+                    <span>AWS</span>
+                    <span>GraphQL</span>
+                    <span>Tailwind</span>
+                </div>
+                <div class="tech-stack-slide inline-block space-x-12 text-gray-400" aria-hidden="true">
+                    <span>React</span>
+                    <span>TypeScript</span>
+                    <span>Node.js</span>
+                    <span>Python</span>
+                    <span>Docker</span>
+                    <span>AWS</span>
+                    <span>GraphQL</span>
+                    <span>Tailwind</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 bg-opacity-50 py-12 mt-16">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center space-x-8 mb-8">
+                <a href="#" class="text-gray-400 hover:text-blue-400 transition">LinkedIn</a>
+                <a href="#" class="text-gray-400 hover:text-blue-400 transition">GitHub</a>
+                <a href="#" class="text-gray-400 hover:text-blue-400 transition">Twitter</a>
+            </div>
+            <p class="text-gray-500">© 2024 Talal Alshamalia. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
