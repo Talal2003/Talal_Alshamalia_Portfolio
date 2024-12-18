@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Talal Alshamalia's Portfolio</title>
-    <meta name="description" content="Portfolio of Talal Alshamalia, a creative developer specializing in innovative digital solutions and cutting-edge technologies.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
         (function(){
             emailjs.init({
@@ -42,20 +41,13 @@
             50% { box-shadow: 0 0 25px rgba(59, 130, 246, 0.8); }
         }
 
-        @keyframes slide-in-left {
-            from { 
-                opacity: 0;
-                transform: translateX(-100px);
-            }
-            to { 
-                opacity: 1;
+        @keyframes scrollTechStack {
+            0% {
                 transform: translateX(0);
             }
-        }
-
-        @keyframes tech-stack-slide {
-            from { transform: translateX(0); }
-            to { transform: translateX(-100%); }
+            100% {
+                transform: translateX(-100%);
+            }
         }
 
         body {
@@ -64,6 +56,15 @@
             animation: gradient-flow 15s ease infinite;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             scroll-behavior: smooth;
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            top: 0;
+            left: 0;
         }
 
         .hero-section {
@@ -84,14 +85,21 @@
             box-shadow: 0 15px 40px rgba(59, 130, 246, 0.3);
         }
 
-        .tech-stack-container {
+        #tech-stack {
+            position: relative;
+            width: 100%;
             overflow: hidden;
-            white-space: nowrap;
+        }
+
+        .tech-stack-container {
+            display: flex;
+            animation: scrollTechStack 40s linear infinite;
         }
 
         .tech-stack-slide {
-            display: inline-block;
-            animation: tech-stack-slide 20s linear infinite;
+            display: flex;
+            justify-content: space-around;
+            min-width: 100%;
         }
 
         .profile-image {
@@ -142,6 +150,8 @@
     </style>
 </head>
 <body class="text-white min-h-screen flex flex-col bg-gray-900">
+    <div id="particles-js"></div>
+
     <header class="container mx-auto px-6 py-8">
         <nav class="flex justify-between items-center">
             <div class="text-2xl font-bold tracking-wide text-white"></div>
@@ -171,9 +181,11 @@
                 <h1 class="text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
                     Talal Alshamalia
                 </h1>
-                <h2 class="text-3xl text-gray-300 mb-6">Software Engineer & Creative Developer/Designer</h2>
+                <h2 class="text-3xl text-gray-300 mb-6">
+                    <span id="typed-specialization"></span>
+                </h2>
                 <p class="text-xl text-gray-400 mb-8 leading-relaxed">
-                    Transforming ideas into elegant digital experiences through innovative design and cutting-edge technology.
+                    Digital solutions built with purpose, innovation, and simplicity.
                 </p>
                 <div class="space-x-4">
                     <a href="#projects" class="inline-block bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-full transition transform hover:-translate-y-1 shadow-lg">
@@ -247,8 +259,8 @@
                     <div class="mb-6 flex justify-center">
                         <i class="fas fa-network-wired text-5xl text-blue-400"></i>
                     </div>
-                    <h3 class="text-2xl font-semibold mb-4 text-blue-300">Web Platform</h3>
-                    <p class="text-gray-400 mb-4">Collaborative project management tool with real-time features and advanced team coordination.</p>
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-300">Project 1</h3>
+                    <p class="text-gray-400 mb-4">Working on it..</p>
                     <div class="flex justify-center space-x-4">
                         <a href="#" class="text-blue-400 hover:text-blue-600">
                             <i class="fab fa-github"></i> Code
@@ -262,8 +274,8 @@
                     <div class="mb-6 flex justify-center">
                         <i class="fas fa-mobile-alt text-5xl text-blue-400"></i>
                     </div>
-                    <h3 class="text-2xl font-semibold mb-4 text-blue-300">Mobile App</h3>
-                    <p class="text-gray-400 mb-4">Advanced fitness tracking app with personalized AI-driven insights and comprehensive health monitoring.</p>
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-300">Project 2</h3>
+                    <p class="text-gray-400 mb-4">Working on it..</p>
                     <div class="flex justify-center space-x-4">
                         <a href="#" class="text-blue-400 hover:text-blue-600">
                             <i class="fab fa-github"></i> Code
@@ -277,8 +289,8 @@
                     <div class="mb-6 flex justify-center">
                         <i class="fas fa-puzzle-piece text-5xl text-blue-400"></i>
                     </div>
-                    <h3 class="text-2xl font-semibold mb-4 text-blue-300">Design System</h3>
-                    <p class="text-gray-400 mb-4">Comprehensive design language and component library for scalable enterprise software solutions.</p>
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-300">Project 3</h3>
+                    <p class="text-gray-400 mb-4">Working on it..</p>
                     <div class="flex justify-center space-x-4">
                         <a href="#" class="text-blue-400 hover:text-blue-600">
                             <i class="fab fa-github"></i> Code
@@ -450,16 +462,36 @@
                                 </div>
                             </div>
                             <div class="mt-6 flex space-x-6">
-                                <a href="#" class="text-gray-400 hover:text-blue-400 transition transform hover:scale-110">
+                                <!-- LinkedIn -->
+                                <a 
+                                    href="https://www.linkedin.com/in/talalalshamalia" 
+                                    target="_blank" 
+                                    class="text-gray-400 hover:text-blue-400 transition transform hover:scale-110"
+                                    aria-label="LinkedIn"
+                                >
                                     <i class="fab fa-linkedin text-3xl"></i>
                                 </a>
-                                <a href="#" class="text-gray-400 hover:text-blue-400 transition transform hover:scale-110">
+                                
+                                <!-- GitHub -->
+                                <a 
+                                    href="https://github.com/talalalshamalia" 
+                                    target="_blank" 
+                                    class="text-gray-400 hover:text-blue-400 transition transform hover:scale-110"
+                                    aria-label="GitHub"
+                                >
                                     <i class="fab fa-github text-3xl"></i>
                                 </a>
-                                <a href="#" class="text-gray-400 hover:text-blue-400 transition transform hover:scale-110">
-                                    <i class="fab fa-twitter text-3xl"></i>
+                                
+                                <!-- Instagram -->
+                                <a 
+                                    href="https://instagram.com/talalalshamalia" 
+                                    target="_blank" 
+                                    class="text-gray-400 hover:text-blue-400 transition transform hover:scale-110"
+                                    aria-label="Instagram"
+                                >
+                                    <i class="fab fa-instagram text-3xl"></i>
                                 </a>
-                            </div>
+                            </div>                            
                         </div>
                     </div>
                     <div class="p-12">
@@ -527,8 +559,8 @@
             </div>
         </section>
 
-        // Send email using EmailJS
         <script>
+            // Send email using EmailJS
             function sendMail() {
                 // Prevent default form submission
                 event.preventDefault();
@@ -588,24 +620,34 @@
         <section id="tech-stack" class="my-16 overflow-hidden">
             <div class="tech-stack-container">
                 <div class="tech-stack-slide inline-block space-x-12 text-gray-400">
-                    <span>React</span>
-                    <span>TypeScript</span>
-                    <span>Node.js</span>
+                    <span>Java</span>
+                    <span>C++</span>
+                    <span>C</span>
                     <span>Python</span>
-                    <span>Docker</span>
-                    <span>AWS</span>
-                    <span>GraphQL</span>
-                    <span>Tailwind</span>
+                    <span>Node.js</span>
+                    <span>HTML/CSS</span>
+                    <span>MATLAB</span>
+                    <span>Excel</span>
+                    <span>Photoshop</span>
+                    <span>Premiere-Pro</span>
+                    <span>Illustrator</span>
+                    <span>Blender</span>
+                    <span>Unreal-Engine</span>
                 </div>
                 <div class="tech-stack-slide inline-block space-x-12 text-gray-400" aria-hidden="true">
-                    <span>React</span>
-                    <span>TypeScript</span>
-                    <span>Node.js</span>
+                    <span>Java</span>
+                    <span>C++</span>
+                    <span>C</span>
                     <span>Python</span>
-                    <span>Docker</span>
-                    <span>AWS</span>
-                    <span>GraphQL</span>
-                    <span>Tailwind</span>
+                    <span>Node.js</span>
+                    <span>HTML/CSS</span>
+                    <span>MATLAB</span>
+                    <span>Excel</span>
+                    <span>Photoshop</span>
+                    <span>Premiere-Pro</span>
+                    <span>Illustrator</span>
+                    <span>Blender</span>
+                    <span>Unreal-Engine</span>
                 </div>
             </div>
         </section>
@@ -614,15 +656,48 @@
     <footer class="bg-gray-900 bg-opacity-50 py-12 mt-16">
         <div class="container mx-auto px-6 text-center">
             <div class="flex justify-center space-x-8 mb-8">
-                <a href="#" class="text-gray-400 hover:text-blue-400 transition">LinkedIn</a>
-                <a href="#" class="text-gray-400 hover:text-blue-400 transition">GitHub</a>
-                <a href="#" class="text-gray-400 hover:text-blue-400 transition">Twitter</a>
-            </div>
-            <p class="text-gray-500">© 2024 Talal Alshamalia. All rights reserved.</p>
+                <a href="https://www.linkedin.com/in/talalalshamalia" class="text-gray-400 hover:text-blue-400 transition" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com/talalalshamalia" class="text-gray-400 hover:text-blue-400 transition" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://instagram.com/talalalshamalia" class="text-gray-400 hover:text-blue-400 transition" target="_blank" rel="noopener noreferrer">Instagram</a>
+            </div>            
+            <p class="text-gray-500">© 2024, Talal Alshamalia's Portfolio. All rights reserved.</p>
+            <p class="text-gray-500">Designed and Developed by Talal Alshamalia</p>
         </div>
     </footer>
 
     <script>
+        // Particle.js configuration
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 40, density: { enable: true, value_area: 800 } },
+                color: { value: '#ffffff' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5, random: false },
+                size: { value: 3, random: true },
+                line_linked: { enable: true, distance: 0, color: '#3b82f6', opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 0.5, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
+                modes: { grab: { distance: 400, line_linked: { opacity: 1 } }, bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 } }
+            },
+            retina_detect: true
+        });
+        
+        // Typed.js configuration for dynamic text
+        new Typed('#typed-specialization', {
+            strings: [
+                'Software Engineer',
+                'Electrical Engineer',
+                'Creative Developer',
+                'Design Innovator',
+            ],
+            typeSpeed: 50,
+            backSpeed: 50,
+            loop: true
+        });
+        // Mobile menu toggle script
         document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenu.classList.toggle('hidden');
