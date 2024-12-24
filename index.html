@@ -41,15 +41,6 @@
             50% { box-shadow: 0 0 25px rgba(59, 130, 246, 0.8); }
         }
 
-        @keyframes scrollTechStack {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-100%);
-            }
-        }
-
         body {
             background: linear-gradient(45deg, #1e293b, #0f172a, #111827);
             background-size: 400% 400%;
@@ -68,10 +59,24 @@
         }
 
         .hero-section {
-            background: rgba(17, 24, 39, 0.6);
-            backdrop-filter: blur(10px);
+            background: rgba(17, 24, 39, 0.6);  /* This sets the background color with opacity */
+            backdrop-filter: blur(10px);        /* This adds the blur effect */
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(59, 130, 246, 0.05), rgba(147, 51, 234, 0.05));
+            animation: gradient-animation 8s ease infinite;
+            z-index: -1;
         }
 
         .project-card {
@@ -83,23 +88,6 @@
         .project-card:hover {
             transform: scale(1.05) rotate(2deg);
             box-shadow: 0 15px 40px rgba(59, 130, 246, 0.3);
-        }
-
-        #tech-stack {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-        }
-
-        .tech-stack-container {
-            display: flex;
-            animation: scrollTechStack 40s linear infinite;
-        }
-
-        .tech-stack-slide {
-            display: flex;
-            justify-content: space-around;
-            min-width: 100%;
         }
 
         .profile-image {
@@ -130,6 +118,7 @@
         .section-title {
             background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
@@ -147,10 +136,190 @@
         .skill-bar {
             background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
         }
+
+        /* Update the education box styles */
+        .course-container {
+            position: relative;
+            overflow: visible;
+            border-radius: 0.75rem;
+            background: rgba(30, 41, 59, 0.5);
+            margin-bottom: 0.5rem;
+            will-change: transform;
+            transition: all 0.3s ease;
+        }
+
+        .course-item {
+            position: relative;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #e5e7eb;
+            display: flex;
+            align-items: center;
+            z-index: 1;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            border-radius: 0.75rem;
+        }
+
+        /* Add this new style for the course content wrapper */
+        .course-content {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Style for the icon */
+        .course-item i {
+            margin-right: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        /* Update the course description popup styles */
+        .course-description {
+            position: absolute;
+            left: 110%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 300px;
+            padding: 1rem;
+            background: rgba(17, 24, 39, 0.95);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 0.5rem;
+            color: #e5e7eb;
+            font-size: 0.875rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 20;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            will-change: transform, opacity;
+        }
+
+        .course-item:hover .course-description {
+            opacity: 1;
+            visibility: visible;
+            left: 105%;
+        }
+
+        .course-item:hover {
+            background: rgba(59, 130, 246, 0.15);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .course-description {
+                position: static;
+                left: auto !important;
+                top: auto !important;
+                bottom: auto;
+                transform: none !important;
+                width: 100%;
+                max-width: none;
+                margin-top: 0;
+                padding: 0;
+                background: rgba(17, 24, 39, 0.98);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(59, 130, 246, 0.3);
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+                opacity: 0;
+                height: 0;
+                overflow: hidden;
+                transition: all 0.3s ease;
+            }
+
+            .course-item:hover .course-description {
+                opacity: 1;
+                height: auto;
+                padding: 0.75rem;
+                margin-top: 0.5rem;
+            }
+
+            .course-item {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 0.75rem 1rem;
+            }
+
+            .course-content {
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        .hover-glow {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(
+                circle at var(--x, 50%) var(--y, 50%),
+                rgba(59, 130, 246, 0.3),
+                transparent 70%
+            );
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            border-radius: 0.75rem;
+        }
+
+        .course-item:hover .hover-glow {
+            opacity: 1;
+        }
+
+        /* Add a subtle pulse animation to the glow when hovering */
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 15px rgba(59, 130, 246, 0.3); }
+            50% { box-shadow: 0 0 25px rgba(59, 130, 246, 0.4); }
+            100% { box-shadow: 0 0 15px rgba(59, 130, 246, 0.3); }
+        }
+
+        .course-container:hover {
+            animation: pulseGlow 2s infinite;
+        }
+
+        /* Update the education card styles in the timeline */
+        .bg-gradient-to-br.from-gray-800\/80.to-gray-900\/80 {
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            will-change: transform;
+        }
+
+        @media (max-width: 768px) {
+            .education-card {
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 90%;
+            }
+            
+            /* Hide the timeline dots on mobile */
+            .group .absolute.-right-3,
+            .group .absolute.-left-3 {
+                display: none;
+            }
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .animate-slide {
+            animation: slide 40s linear infinite;
+        }
+
+        .slider-track:hover .animate-slide {
+            animation-play-state: paused;
+        }
     </style>
 </head>
 <body class="text-white min-h-screen flex flex-col bg-gray-900">
     <div id="particles-js"></div>
+    <button id="scroll-to-top" class="fixed bottom-8 right-8 bg-gradient-to-r from-blue-500 to-purple-600 text-white p-4 rounded-full shadow-lg opacity-0 transition-opacity duration-300 hover:from-purple-600 hover:to-blue-500 hover:shadow-xl focus:outline-none z-50">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <header class="container mx-auto px-6 py-8">
         <nav class="flex justify-between items-center">
@@ -176,28 +345,28 @@
     </header>
 
     <main class="container mx-auto px-6 flex-grow">
-        <section class="hero-section flex items-center justify-between min-h-[80vh] p-12 mb-16">
-            <div class="w-2/3 space-y-6">
-                <h1 class="text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
+        <section class="hero-section flex flex-col md:flex-row items-center justify-between min-h-[80vh] p-6 md:p-12 mb-16">
+            <div class="w-full md:w-2/3 space-y-6 text-center md:text-left mb-8 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
                     Talal Alshamalia
                 </h1>
-                <h2 class="text-3xl text-gray-300 mb-6">
+                <h2 class="text-2xl md:text-3xl text-gray-300 mb-6">
                     <span id="typed-specialization"></span>
                 </h2>
-                <p class="text-xl text-gray-400 mb-8 leading-relaxed">
+                <p class="text-lg md:text-xl text-gray-400 mb-8 leading-relaxed">
                     Digital solutions built with purpose, innovation, and simplicity.
                 </p>
-                <div class="space-x-4">
-                    <a href="#projects" class="inline-block bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-full transition transform hover:-translate-y-1 shadow-lg">
+                <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 items-center justify-center md:justify-start">
+                    <a href="#projects" class="w-full md:w-auto inline-block bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-full transition transform hover:-translate-y-1 shadow-lg text-center">
                         View Projects
                     </a>
-                    <a href="#contact" class="inline-block border-2 border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white px-8 py-4 rounded-full transition transform hover:-translate-y-1">
+                    <a href="#contact" class="w-full md:w-auto inline-block border-2 border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white px-8 py-4 rounded-full transition transform hover:-translate-y-1 text-center">
                         Contact Me
                     </a>
                 </div>
             </div>
-            <div class="w-1/3 flex justify-center">
-                <div class="profile-image w-64 h-64 bg-gradient-to-tr from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-6xl shadow-2xl">
+            <div class="w-full md:w-1/3 flex justify-center">
+                <div class="profile-image w-48 h-48 md:w-64 md:h-64 bg-gradient-to-tr from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-4xl md:text-6xl shadow-2xl">
                     🚀
                 </div>
             </div>
@@ -206,12 +375,12 @@
         <!-- Replace the existing education section with this code -->
         <section id="education" class="my-16">
             <h2 class="text-4xl font-bold text-center mb-12 section-title">Education</h2>
-            <div class="relative max-w-5xl mx-auto before:absolute before:top-0 before:bottom-0 before:w-0.5 before:bg-gradient-to-b before:from-blue-500 before:via-purple-500 before:to-blue-500 before:left-1/2 before:-translate-x-1/2">
-                <div class="space-y-16 relative">
+            <div class="relative max-w-5xl mx-auto before:absolute before:top-0 before:bottom-0 before:w-0.5 before:bg-gradient-to-b before:from-blue-500 before:via-purple-500 before:to-blue-500 before:left-1/2 before:-translate-x-1/2 before:hidden md:before:block">
+                <div class="space-y-16 relative md:space-y-16">
 
                     <!-- Bachelor of Science in Electrical Engineering -->
-                    <div class="flex items-center w-full group">
-                        <div class="w-1/2 pr-16 relative">
+                    <div class="flex flex-col md:flex-row items-center w-full group">
+                        <div class="w-full md:w-1/2 pr-0 md:pr-16 relative mb-8 md:mb-0">
                             <div class="bg-gradient-to-br from-gray-800/80 to-gray-900/80 p-8 rounded-2xl shadow-2xl border border-blue-500/20 transform transition-all duration-500 hover:scale-[1.02] backdrop-blur-lg">
                                 <div class="absolute -right-3 top-1/2 transform -translate-y-1/2 w-6 h-6 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full border-4 border-gray-900 group-hover:scale-150 transition-transform duration-500"></div>
                                 <div class="flex items-start space-x-4 mb-6">
@@ -237,8 +406,10 @@
                                         <!-- Page 1 -->
                                         <div class="course-container ee-page" data-page="1">
                                             <div class="course-item">
-                                                <i class="fas fa-microchip text-blue-400 mr-2"></i>
-                                                Digital Logic Design
+                                                <div class="course-content">
+                                                    <i class="fas fa-microchip text-blue-400"></i>
+                                                    <span>Digital Logic Design</span>
+                                                </div>
                                                 <div class="course-description">
                                                     Number representation and Boolean Algebra. Combinational circuit analysis and design. 
                                                     K-map and tabulation methods. Multiplexers, decoders, adders/subtracters and PLD devices. 
@@ -249,8 +420,10 @@
                                         </div>
                                         <div class="course-container ee-page" data-page="1">
                                             <div class="course-item">
-                                                <i class="fas fa-wave-square text-blue-400 mr-2"></i>
-                                                Signals and Systems
+                                                <div class="course-content">
+                                                    <i class="fas fa-wave-square text-blue-400"></i>
+                                                    <span>Signals and Systems</span>
+                                                </div>
                                                 <div class="course-description">
                                                     Signal and system representation. Convolution and impulse response.
                                                     Fourier series, Fourier transform and Laplace transform.
@@ -261,8 +434,10 @@
                                         </div>
                                         <div class="course-container ee-page" data-page="1">
                                             <div class="course-item">
-                                                <i class="fas fa-bolt text-blue-400 mr-2"></i>
-                                                Electric Circuits
+                                                <div class="course-content">
+                                                    <i class="fas fa-bolt text-blue-400"></i>
+                                                    <span>Electric Circuits</span>
+                                                </div>
                                                 <div class="course-description">
                                                     Advanced topics including three-phase systems, magnetically-coupled systems, resonance and
                                                     second-order systems, Laplace transform circuit analysis, Fourier series for periodic waveforms
@@ -275,8 +450,10 @@
                                         <!-- Page 2 -->
                                         <div class="course-container ee-page hidden" data-page="2">
                                             <div class="course-item">
-                                                <i class="fas fa-microchip text-blue-400 mr-2"></i>
-                                                Electronics
+                                                <div class="course-content">
+                                                    <i class="fas fa-microchip text-blue-400"></i>
+                                                    <span>Electronics</span>
+                                                </div>
                                                 <div class="course-description">
                                                     Large-signal and incremental characteristics of the pn diode, BJT, MOSFET and JFET.
                                                     Large-signal analysis and computer simulation of devices and digital circuits.
@@ -289,8 +466,10 @@
                                         </div>
                                         <div class="course-container ee-page hidden" data-page="2">
                                             <div class="course-item">
-                                                <i class="fas fa-plug text-blue-400 mr-2"></i>
-                                                Electrical Energy Conversion
+                                                <div class="course-content">
+                                                    <i class="fas fa-plug text-blue-400"></i>
+                                                    <span>Electrical Energy Conversion</span>
+                                                </div>
                                                 <div class="course-description">
                                                     Traditional and renewable electrical energy sources, principles of electromechanical
                                                     energy conversion, magnetic circuits and transformers, steady state performance of
@@ -301,8 +480,10 @@
                                         </div>
                                         <div class="course-container ee-page hidden" data-page="2">
                                             <div class="course-item">
-                                                <i class="fas fa-chart-line text-blue-400 mr-2"></i>
-                                                Probabilistic Methods In Engineering
+                                                <div class="course-content">
+                                                    <i class="fas fa-chart-line text-blue-400"></i>
+                                                    <span>Probabilistic Methods In Engineering</span>
+                                                </div>
                                                 <div class="course-description">
                                                     Techniques for modeling and analysis of random phenomena in EECS, including communication, control and computer systems.
                                                     Distribution, density and characteristic functions. Computer generation. Functions of random variables.
@@ -314,8 +495,10 @@
                                         <!-- Page 3 -->
                                         <div class="course-container ee-page hidden" data-page="3">
                                             <div class="course-item">
-                                                <i class="fas fa-broadcast-tower text-blue-400 mr-2"></i>
-                                                Electromagnetics
+                                                <div class="course-content">
+                                                    <i class="fas fa-broadcast-tower text-blue-400"></i>
+                                                    <span>Electromagnetics</span>
+                                                </div>
                                                 <div class="course-description">
                                                     Maxwell's equations, Boundary conditions for electromagnetics, Plane-wave propagation in lossless
                                                     and lossy media,Reflection, Transmision, Waveguides, Cavity resonators, Radiation, Antenna
@@ -326,8 +509,10 @@
                                         </div>
                                         <div class="course-container ee-page hidden" data-page="3">
                                             <div class="course-item">
-                                                <i class="fas fa-sync text-blue-400 mr-2"></i>
-                                                Feedback Control Systems
+                                                <div class="course-content">
+                                                    <i class="fas fa-sync text-blue-400"></i>
+                                                    <span>Feedback Control Systems</span>
+                                                </div>
                                                 <div class="course-description">
                                                     Feedback methods for the control of dynamic systems. Topics include
                                                     characteristics and performance of feedback systems, state variable analysis,
@@ -338,8 +523,10 @@
                                         </div>
                                         <div class="course-container ee-page hidden" data-page="3">
                                             <div class="course-item">
-                                                <i class="fas fa-atom text-blue-400 mr-2"></i>
-                                                Solid State Devices
+                                                <div class="course-content">
+                                                    <i class="fas fa-atom text-blue-400"></i>
+                                                    <span>Solid State Devices</span>
+                                                </div>
                                                 <div class="course-description">
                                                     Theory and operation of physical electronic devices. Electrical transport in metals,
                                                     semiconductors and models of BJT's and FET's. Optoelectronic devices and integrated circuits.
@@ -359,13 +546,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="w-1/2"></div>
+                        <div class="w-full md:w-1/2"></div>
                     </div>
 
                     <!-- Bachelor of Science in Computer Science and Engineering -->
-                    <div class="flex items-center w-full group">
-                        <div class="w-1/2"></div>
-                        <div class="w-1/2 pl-16 relative">
+                    <div class="flex flex-col md:flex-row items-center w-full group">
+                        <div class="w-full md:w-1/2"></div>
+                        <div class="w-full md:w-1/2 pl-0 md:pl-16 relative">
                             <div class="bg-gradient-to-br from-gray-800/80 to-gray-900/80 p-8 rounded-2xl shadow-2xl border border-purple-500/20 transform transition-all duration-500 hover:scale-[1.02] backdrop-blur-lg">
                                 <div class="absolute -left-3 top-1/2 transform -translate-y-1/2 w-6 h-6 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full border-4 border-gray-900 group-hover:scale-150 transition-transform duration-500"></div>
                                 <div class="flex items-start space-x-4 mb-6">
@@ -391,8 +578,10 @@
                                         <!-- Page 1 -->
                                         <div class="course-container cs-page" data-page="1">
                                             <div class="course-item">
-                                                <i class="fas fa-cube text-purple-400 mr-2"></i>
-                                                Object Oriented Programming
+                                                <div class="course-content">
+                                                    <i class="fas fa-cube text-purple-400"></i>
+                                                    <span>Object Oriented Programming</span>
+                                                </div>
                                                 <div class="course-description">
                                                     Covers number types, objects, methods, control structures, vectors, files, and inheritance
                                                     using the Java language. Utilizes the Java platform to develop GUI interfaces.
@@ -402,8 +591,10 @@
                                         </div>
                                         <div class="course-container cs-page" data-page="1">
                                             <div class="course-item">
-                                                <i class="fas fa-list text-purple-400 mr-2"></i>
-                                                Linear Data Structures
+                                                <div class="course-content">
+                                                    <i class="fas fa-list text-purple-400"></i>
+                                                    <span>Linear Data Structures</span>
+                                                </div>
                                                 <div class="course-description">
                                                     This course looks at stacks, queues, and lists as well as the order of algorithms used to access and modify
                                                     these structures. In addition recursion, hashing, sorting, and set representation are examined in depth.
@@ -413,8 +604,10 @@
                                         </div>
                                         <div class="course-container cs-page" data-page="1">
                                             <div class="course-item">
-                                                <i class="fas fa-sitemap text-purple-400 mr-2"></i>
-                                                Non-Linear Data Structures
+                                                <div class="course-content">
+                                                    <i class="fas fa-sitemap text-purple-400"></i>
+                                                    <span>Non-Linear Data Structures</span>
+                                                </div>
                                                 <div class="course-description">
                                                     This course looks at trees (binary, balanced, and n-ary), graphs, and advanced sorting techniques.
                                                     In addition, the C++ language is used as the main vehicle and is introduced in the couse.
@@ -426,8 +619,10 @@
                                         <!-- Page 2 -->
                                         <div class="course-container cs-page hidden" data-page="2">
                                             <div class="course-item">
-                                                <i class="fas fa-microchip text-purple-400 mr-2"></i>
-                                                Computer Architecture and Organization
+                                                <div class="course-content">
+                                                    <i class="fas fa-microchip text-purple-400"></i>
+                                                    <span>Computer Architecture and Organization</span>
+                                                </div>
                                                 <div class="course-description">
                                                     Fundamentals of computer architecture, computer arithmetic, memory systems, interfacing and communication, device
                                                     subsystems, processor design, cpu organization, assembly programming, performance, distributed models and multiprocessing.
@@ -437,8 +632,10 @@
                                         </div>
                                         <div class="course-container cs-page hidden" data-page="2">
                                             <div class="course-item">
-                                                <i class="fas fa-square-root-alt text-purple-400 mr-2"></i>
-                                                Discrete Structures
+                                                <div class="course-content">
+                                                    <i class="fas fa-square-root-alt text-purple-400"></i>
+                                                    <span>Discrete Structures</span>
+                                                </div>
                                                 <div class="course-description">
                                                     Mathematical foundations of computer science to develop software including proof techniques,
                                                     Boolean logic, graphs, trees, recurrence relations, functions, combinatorics, and number theory.
@@ -448,8 +645,10 @@
                                         </div>
                                         <div class="course-container cs-page hidden" data-page="2">
                                             <div class="course-item">
-                                                <i class="fas fa-memory text-purple-400 mr-2"></i>
-                                                Embedded Systems
+                                                <div class="course-content">
+                                                    <i class="fas fa-memory text-purple-400"></i>
+                                                    <span>Embedded Systems</span>
+                                                </div>
                                                 <div class="course-description">
                                                     Microcontroller interfacing, assembly and C language programming for embedded systems, timer, input/output synchronization;
                                                     analog to digital conversion, digital to analog conversion, interrupts, and embedded system debugging techniques.
@@ -461,8 +660,10 @@
                                         <!-- Page 3 -->
                                         <div class="course-container cs-page hidden" data-page="3">
                                             <div class="course-item">
-                                                <i class="fas fa-network-wired text-purple-400 mr-2"></i>
-                                                Data Communications
+                                                <div class="course-content">
+                                                    <i class="fas fa-network-wired text-purple-400"></i>
+                                                    <span>Data Communications</span>
+                                                </div>
                                                 <div class="course-description">
                                                     Analog and digital data transmission, transmission media, Modulation techniques.
                                                     Data encoding, asynchronous and synchronous transmissions, USART, RS232-C, RS-449
@@ -473,8 +674,10 @@
                                         </div>
                                         <div class="course-container cs-page hidden" data-page="3">
                                             <div class="course-item">
-                                                <i class="fas fa-laptop-code text-purple-400 mr-2"></i>
-                                                <span style="font-size: 0.93em;">Operating Systems And Systems Programming</span>
+                                                <div class="course-content">
+                                                    <i class="fas fa-laptop-code text-purple-400"></i>
+                                                    <span>Operating Systems And Systems Programming</span>
+                                                </div>
                                                 <div class="course-description">
                                                     Examines the external and internal characteristics of computer operating systems and related software.
                                                     Details of at least one operating system and comparison with other operating systems.
@@ -485,8 +688,10 @@
                                         </div>
                                         <div class="course-container cs-page hidden" data-page="3">
                                             <div class="course-item">
-                                                <i class="fas fa-shield-alt text-purple-400 mr-2"></i>
-                                                Computer Security
+                                                <div class="course-content">
+                                                    <i class="fas fa-shield-alt text-purple-400"></i>
+                                                    <span>Computer Security</span>
+                                                </div>
                                                 <div class="course-description">
                                                     Foundational concepts in Computer Security: The CIA Triad, Authentication, Access Control,
                                                     Least Privilege, Complete Mediation, Economy of Mechanism, Reference Monitors, Defensive Programming,
@@ -509,8 +714,8 @@
                     </div>
 
                     <!-- High School -->
-                    <div class="flex items-center w-full group">
-                        <div class="w-1/2 pr-16 relative">
+                    <div class="flex flex-col md:flex-row items-center w-full group">
+                        <div class="w-full md:w-1/2 pr-0 md:pr-16 relative mb-8 md:mb-0">
                             <div class="bg-gradient-to-br from-gray-800/80 to-gray-900/80 p-8 rounded-2xl shadow-2xl border border-blue-500/20 transform transition-all duration-500 hover:scale-[1.02] backdrop-blur-lg">
                                 <div class="absolute -right-3 top-1/2 transform -translate-y-1/2 w-6 h-6 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full border-4 border-gray-900 group-hover:scale-150 transition-transform duration-500"></div>
                                 <div class="flex items-start space-x-4 mb-6">
@@ -528,6 +733,7 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="w-full md:w-1/2"></div>
                     </div>
                 </div>
             </div>
@@ -597,6 +803,8 @@
                 border-radius: 0.75rem;
                 background: rgba(30, 41, 59, 0.5);
                 margin-bottom: 0.5rem;
+                will-change: transform;
+                transition: all 0.3s ease;
             }
 
             .course-item {
@@ -608,67 +816,88 @@
                 display: flex;
                 align-items: center;
                 z-index: 1;
+                transform: translateZ(0);
+                backface-visibility: hidden;
+                border-radius: 0.75rem;
             }
 
-            .course-description {
-                position: absolute;
-                left: 110%;
-                top: 50%;
-                transform: translateY(-50%);
-                width: 300px;
-                padding: 1rem;
-                background: rgba(17, 24, 39, 0.95);
-                border: 1px solid rgba(59, 130, 246, 0.2);
-                border-radius: 0.5rem;
-                color: #e5e7eb;
-                font-size: 0.875rem;
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.3s ease;
-                z-index: 20;
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-                backdrop-filter: blur(12px);
-            }
-
-            .course-item:hover .course-description {
-                opacity: 1;
-                visibility: visible;
-                left: 105%;
-            }
-
-            .course-item:hover {
+            .course-container:hover {
                 background: rgba(59, 130, 246, 0.1);
+                box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
                 transform: translateX(5px);
             }
 
-            /* Responsive adjustments */
-            @media (max-width: 768px) {
-                .course-description {
-                    left: 50%;
-                    top: 120%;
-                    transform: translateX(-50%);
-                    width: 250px;
-                }
-
-                .course-item:hover .course-description {
-                    left: 50%;
-                    top: 110%;
-                }
+            .course-item:hover {
+                background: rgba(59, 130, 246, 0.15);
             }
 
             .hover-glow {
                 position: absolute;
                 inset: 0;
-                background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), 
-                                        rgba(59, 130, 246, 0.15), 
-                                        transparent 50%);
+                background: radial-gradient(
+                    circle at var(--x, 50%) var(--y, 50%),
+                    rgba(59, 130, 246, 0.3),
+                    transparent 70%
+                );
                 opacity: 0;
                 transition: opacity 0.3s;
                 pointer-events: none;
+                border-radius: 0.75rem;
             }
 
             .course-item:hover .hover-glow {
                 opacity: 1;
+            }
+
+            @keyframes pulseGlow {
+                0% { box-shadow: 0 0 15px rgba(59, 130, 246, 0.3); }
+                50% { box-shadow: 0 0 25px rgba(59, 130, 246, 0.4); }
+                100% { box-shadow: 0 0 15px rgba(59, 130, 246, 0.3); }
+            }
+
+            .course-container:hover {
+                animation: pulseGlow 2s infinite;
+            }
+
+            /* Responsive adjustments */
+            @media (max-width: 768px) {
+                .course-description {
+                    position: static;
+                    left: auto !important;
+                    top: auto !important;
+                    bottom: auto;
+                    transform: none !important;
+                    width: 100%;
+                    max-width: none;
+                    margin-top: 0;
+                    padding: 0;
+                    background: rgba(17, 24, 39, 0.98);
+                    backdrop-filter: blur(10px);
+                    border: 1px solid rgba(59, 130, 246, 0.3);
+                    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+                    opacity: 0;
+                    height: 0;
+                    overflow: hidden;
+                    transition: all 0.3s ease;
+                }
+
+                .course-item:hover .course-description {
+                    opacity: 1;
+                    height: auto;
+                    padding: 0.75rem;
+                    margin-top: 0.5rem;
+                }
+
+                .course-item {
+                    flex-direction: column;
+                    align-items: stretch;
+                    padding: 0.75rem 1rem;
+                }
+
+                .course-content {
+                    display: flex;
+                    align-items: center;
+                }
             }
         </style>
 
@@ -723,9 +952,9 @@
             </div>
         </section>
 
-        <section id="skills" class="my-16">
-            <h2 class="text-4xl font-bold text-center mb-12 section-title">Skills</h2>
-            <div class="container mx-auto">
+        <section id="skills" class="my-16 relative">
+            <div class="container mx-auto px-6 relative z-10">
+                <h2 class="text-4xl font-bold text-center mb-12 section-title">Skills</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div class="skills-category">
                         <h3 class="text-2xl font-semibold text-blue-300 mb-6 text-center">Programming</h3>
@@ -746,7 +975,7 @@
                                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" class="skill-icon">
                             </div>
                             <div class="skill-icon-container group" data-tooltip="HTML">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML" class="skill-icon mr-2">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML" class="skill-icon">
                             </div>
                             <div class="skill-icon-container group" data-tooltip="CSS">
                                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS" class="skill-icon">
@@ -924,12 +1153,12 @@
                                     name="name"
                                     placeholder="Your Name" 
                                     required
-                                    class="w-full px-4 py-3 bg-gray-700 rounded-lg text-white 
+                                    class="w-full px-4 py-3 pr-12 bg-gray-700 rounded-lg text-white 
                                         focus:outline-none focus:ring-2 focus:ring-blue-500 
                                         transition duration-300 
                                         placeholder-gray-500"
                                 >
-                                <i class="fas fa-user absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
+                                <i class="fas fa-user absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 pointer-events-none"></i>
                             </div>
                             <div class="relative">
                                 <input 
@@ -938,12 +1167,12 @@
                                     name="email"
                                     placeholder="Your Email" 
                                     required
-                                    class="w-full px-4 py-3 bg-gray-700 rounded-lg text-white 
+                                    class="w-full px-4 py-3 pr-12 bg-gray-700 rounded-lg text-white 
                                         focus:outline-none focus:ring-2 focus:ring-blue-500 
                                         transition duration-300 
                                         placeholder-gray-500"
                                 >
-                                <i class="fas fa-envelope absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
+                                <i class="fas fa-envelope absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 pointer-events-none"></i>
                             </div>
                             <div class="relative">
                                 <textarea 
@@ -952,12 +1181,12 @@
                                     placeholder="Hey Talal, love the website! I'd like to chat about some opportunities you might like!" 
                                     rows="4" 
                                     required
-                                    class="w-full px-4 py-3 bg-gray-700 rounded-lg text-white 
+                                    class="w-full px-4 py-3 pr-12 bg-gray-700 rounded-lg text-white 
                                         focus:outline-none focus:ring-2 focus:ring-blue-500 
                                         transition duration-300 
                                         placeholder-gray-500"
                                 ></textarea>
-                                <i class="fas fa-comment-dots absolute right-4 top-4 text-gray-500"></i>
+                                <i class="fas fa-comment-dots absolute right-4 top-4 text-gray-500 pointer-events-none"></i>
                             </div>
                             <div id="form-status" class="text-center mb-4"></div>
                             <button 
@@ -981,7 +1210,7 @@
 
         <script>
             // Send email using EmailJS
-            function sendMail() {
+            function sendMail(event) {
                 // Prevent default form submission
                 event.preventDefault();
 
@@ -989,6 +1218,23 @@
                 const form = document.getElementById('contact-form');
                 const submitButton = form.querySelector('button[type="submit"]');
                 const formStatus = document.getElementById('form-status');
+
+                // Basic form validation
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const message = document.getElementById('message').value.trim();
+
+                if (!name || !email || !message) {
+                    formStatus.innerHTML = '<p class="text-red-500">Please fill in all fields.</p>';
+                    return;
+                }
+
+                // Email validation
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    formStatus.innerHTML = '<p class="text-red-500">Please enter a valid email address.</p>';
+                    return;
+                }
 
                 // Disable submit button and show loading state
                 submitButton.disabled = true;
@@ -1002,72 +1248,63 @@
 
                 // Collect form data
                 const params = {
-                    name: document.getElementById('name').value,
-                    email: document.getElementById('email').value,
-                    message: document.getElementById('message').value,
+                    name: name,
+                    email: email,
+                    message: message,
                 }
 
                 // Send email using EmailJS
-                emailjs.send(
-                    "service_9010kbi",  // Your EmailJS Service ID
-                    "template_5n7377d", // Your EmailJS Template ID
-                    params
-                )
-                .then(() => {
-                    // Success: Show success message and reset form
-                    formStatus.innerHTML = '<p class="text-green-500">Message sent successfully!</p>';
-                    form.reset(); // Clear form inputs
-                })
-                .catch((error) => {
-                    // Error: Show error message
-                    console.error('Error:', error);
-                    formStatus.innerHTML = '<p class="text-red-500">Failed to send message. Please try again.</p>';
-                })
-                .finally(() => {
-                    // Re-enable submit button
-                    submitButton.disabled = false;
-                    submitButton.innerHTML = `
-                        <i class="fas fa-paper-plane"></i>
-                        <span>Send Message</span>
-                    `;
-                });
+                emailjs.send("service_9010kbi", "template_5n7377d", params)
+                    .then(() => {
+                        formStatus.innerHTML = '<p class="text-green-500">Message sent successfully!</p>';
+                        form.reset();
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                        formStatus.innerHTML = '<p class="text-red-500">Failed to send message. Please try again.</p>';
+                    })
+                    .finally(() => {
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = `
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Send Message</span>
+                        `;
+                    });
             }
 
-            // Add event listener to form
-            document.getElementById('contact-form').addEventListener('submit', SendMail);
+            // Add event listener to form with the correct function name
+            document.getElementById('contact-form').addEventListener('submit', sendMail);
         </script>
 
-        <section id="tech-stack" class="my-16 overflow-hidden">
-            <div class="tech-stack-container">
-                <div class="tech-stack-slide inline-block space-x-12 text-gray-400">
-                    <span>Java</span>
-                    <span>C++</span>
-                    <span>C</span>
-                    <span>Python</span>
-                    <span>Node.js</span>
-                    <span>HTML/CSS</span>
-                    <span>MATLAB</span>
-                    <span>Excel</span>
-                    <span>Photoshop</span>
-                    <span>Premiere-Pro</span>
-                    <span>Illustrator</span>
-                    <span>Blender</span>
-                    <span>Unreal-Engine</span>
+        <section class="tech-stack-slider overflow-hidden py-4">
+            <div class="slider-track whitespace-nowrap">
+                <div class="slide-content inline-block animate-slide">
+                    <span class="mx-6 text-base text-gray-400">C++</span>
+                    <span class="mx-6 text-base text-gray-400">C</span>
+                    <span class="mx-6 text-base text-gray-400">Python</span>
+                    <span class="mx-6 text-base text-gray-400">Node.js</span>
+                    <span class="mx-6 text-base text-gray-400">HTML/CSS</span>
+                    <span class="mx-6 text-base text-gray-400">MATLAB</span>
+                    <span class="mx-6 text-base text-gray-400">Excel</span>
+                    <span class="mx-6 text-base text-gray-400">Photoshop</span>
+                    <span class="mx-6 text-base text-gray-400">Premiere-Pro</span>
+                    <span class="mx-6 text-base text-gray-400">Illustrator</span>
+                    <span class="mx-6 text-base text-gray-400">Blender</span>
+                    <span class="mx-6 text-base text-gray-400">Unreal-Engine</span>
                 </div>
-                <div class="tech-stack-slide inline-block space-x-12 text-gray-400" aria-hidden="true">
-                    <span>Java</span>
-                    <span>C++</span>
-                    <span>C</span>
-                    <span>Python</span>
-                    <span>Node.js</span>
-                    <span>HTML/CSS</span>
-                    <span>MATLAB</span>
-                    <span>Excel</span>
-                    <span>Photoshop</span>
-                    <span>Premiere-Pro</span>
-                    <span>Illustrator</span>
-                    <span>Blender</span>
-                    <span>Unreal-Engine</span>
+                <div class="slide-content inline-block animate-slide">
+                    <span class="mx-6 text-base text-gray-400">C++</span>
+                    <span class="mx-6 text-base text-gray-400">C</span>
+                    <span class="mx-6 text-base text-gray-400">Python</span>
+                    <span class="mx-6 text-base text-gray-400">Node.js</span>
+                    <span class="mx-6 text-base text-gray-400">HTML/CSS</span>
+                    <span class="mx-6 text-base text-gray-400">MATLAB</span>
+                    <span class="mx-6 text-base text-gray-400">Excel</span>
+                    <span class="mx-6 text-base text-gray-400">Photoshop</span>
+                    <span class="mx-6 text-base text-gray-400">Premiere-Pro</span>
+                    <span class="mx-6 text-base text-gray-400">Illustrator</span>
+                    <span class="mx-6 text-base text-gray-400">Blender</span>
+                    <span class="mx-6 text-base text-gray-400">Unreal-Engine</span>
                 </div>
             </div>
         </section>
@@ -1117,10 +1354,29 @@
             backSpeed: 50,
             loop: true
         });
+
         // Mobile menu toggle script
         document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenu.classList.toggle('hidden');
+        });
+
+        // Scroll 'to top functionality
+        const scrollToTopBtn = document.getElementById('scroll-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.style.opacity = '1';
+            } else {
+                scrollToTopBtn.style.opacity = '0';
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
     </script>
 </body>
