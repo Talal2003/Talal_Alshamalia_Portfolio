@@ -178,7 +178,6 @@
         /* Update the course description popup styles */
         .course-description {
             position: absolute;
-            left: 110%;
             top: 50%;
             transform: translateY(-50%);
             width: 300px;
@@ -196,14 +195,26 @@
             will-change: transform, opacity;
         }
 
-        .course-item:hover .course-description {
+        /* EE courses - description appears on the right */
+        .ee-course .course-description {
+            left: 110%;
+        }
+
+        .ee-course:hover .course-description {
             opacity: 1;
             visibility: visible;
             left: 105%;
         }
 
-        .course-item:hover {
-            background: rgba(59, 130, 246, 0.15);
+        /* CS courses - description appears on the left */
+        .cs-course .course-description {
+            right: 110%;
+        }
+
+        .cs-course:hover .course-description {
+            opacity: 1;
+            visibility: visible;
+            right: 105%;
         }
 
         /* Responsive adjustments */
@@ -501,7 +512,7 @@
                                     <div class="grid grid-cols-1 gap-3">
 
                                         <!-- Page 1 -->
-                                        <div class="course-container ee-page" data-page="1">
+                                        <div class="course-container ee-page ee-course" data-page="1">
                                             <div class="course-item">
                                                 <div class="course-content">
                                                     <i class="fas fa-microchip text-blue-400"></i>
@@ -515,7 +526,7 @@
                                                 <div class="hover-glow"></div>
                                             </div>
                                         </div>
-                                        <div class="course-container ee-page" data-page="1">
+                                        <div class="course-container ee-page ee-course" data-page="1">
                                             <div class="course-item">
                                                 <div class="course-content">
                                                     <i class="fas fa-wave-square text-blue-400"></i>
@@ -529,7 +540,7 @@
                                                 <div class="hover-glow"></div>
                                             </div>
                                         </div>
-                                        <div class="course-container ee-page" data-page="1">
+                                        <div class="course-container ee-page ee-course" data-page="1">
                                             <div class="course-item">
                                                 <div class="course-content">
                                                     <i class="fas fa-bolt text-blue-400"></i>
@@ -545,7 +556,7 @@
                                         </div>
 
                                         <!-- Page 2 -->
-                                        <div class="course-container ee-page hidden" data-page="2">
+                                        <div class="course-container ee-page ee-course hidden" data-page="2">
                                             <div class="course-item">
                                                 <div class="course-content">
                                                     <i class="fas fa-microchip text-blue-400"></i>
@@ -561,7 +572,7 @@
                                                 <div class="hover-glow"></div>
                                             </div>
                                         </div>
-                                        <div class="course-container ee-page hidden" data-page="2">
+                                        <div class="course-container ee-page ee-course hidden" data-page="2">
                                             <div class="course-item">
                                                 <div class="course-content">
                                                     <i class="fas fa-plug text-blue-400"></i>
@@ -575,7 +586,7 @@
                                                 <div class="hover-glow"></div>
                                             </div>
                                         </div>
-                                        <div class="course-container ee-page hidden" data-page="2">
+                                        <div class="course-container ee-page ee-course hidden" data-page="2">
                                             <div class="course-item">
                                                 <div class="course-content">
                                                     <i class="fas fa-chart-line text-blue-400"></i>
@@ -590,7 +601,7 @@
                                         </div>
 
                                         <!-- Page 3 -->
-                                        <div class="course-container ee-page hidden" data-page="3">
+                                        <div class="course-container ee-page ee-course hidden" data-page="3">
                                             <div class="course-item">
                                                 <div class="course-content">
                                                     <i class="fas fa-broadcast-tower text-blue-400"></i>
@@ -604,7 +615,7 @@
                                                 <div class="hover-glow"></div>
                                             </div>
                                         </div>
-                                        <div class="course-container ee-page hidden" data-page="3">
+                                        <div class="course-container ee-page ee-course hidden" data-page="3">
                                             <div class="course-item">
                                                 <div class="course-content">
                                                     <i class="fas fa-sync text-blue-400"></i>
@@ -618,7 +629,7 @@
                                                 <div class="hover-glow"></div>
                                             </div>
                                         </div>
-                                        <div class="course-container ee-page hidden" data-page="3">
+                                        <div class="course-container ee-page ee-course hidden" data-page="3">
                                             <div class="course-item">
                                                 <div class="course-content">
                                                     <i class="fas fa-atom text-blue-400"></i>
@@ -673,7 +684,7 @@
                                     <div id="cs-courses" class="grid grid-cols-1 gap-3">
 
                                         <!-- Page 1 -->
-                                        <div class="course-container cs-page" data-page="1">
+                                        <div class="course-container cs-page cs-course" data-page="1">
                                             <div class="course-item">
                                                 <div class="course-content">
                                                     <i class="fas fa-cube text-purple-400"></i>
@@ -686,7 +697,7 @@
                                                 <div class="hover-glow"></div>
                                             </div>
                                         </div>
-                                        <div class="course-container cs-page" data-page="1">
+                                        <div class="course-container cs-page cs-course" data-page="1">
                                             <div class="course-item">
                                                 <div class="course-content">
                                                     <i class="fas fa-list text-purple-400"></i>
@@ -699,7 +710,7 @@
                                                 <div class="hover-glow"></div>
                                             </div>
                                         </div>
-                                        <div class="course-container cs-page" data-page="1">
+                                        <div class="course-container cs-page cs-course" data-page="1">
                                             <div class="course-item">
                                                 <div class="course-content">
                                                     <i class="fas fa-sitemap text-purple-400"></i>
@@ -714,7 +725,7 @@
                                         </div>
                                         
                                         <!-- Page 2 -->
-                                        <div class="course-container cs-page hidden" data-page="2">
+                                        <div class="course-container cs-page cs-course hidden" data-page="2">
                                             <div class="course-item">
                                                 <div class="course-content">
                                                     <i class="fas fa-microchip text-purple-400"></i>
@@ -727,7 +738,7 @@
                                                 <div class="hover-glow"></div>
                                             </div>
                                         </div>
-                                        <div class="course-container cs-page hidden" data-page="2">
+                                        <div class="course-container cs-page cs-course hidden" data-page="2">
                                             <div class="course-item">
                                                 <div class="course-content">
                                                     <i class="fas fa-square-root-alt text-purple-400"></i>
@@ -740,7 +751,7 @@
                                                 <div class="hover-glow"></div>
                                             </div>
                                         </div>
-                                        <div class="course-container cs-page hidden" data-page="2">
+                                        <div class="course-container cs-page cs-course hidden" data-page="2">
                                             <div class="course-item">
                                                 <div class="course-content">
                                                     <i class="fas fa-memory text-purple-400"></i>
@@ -755,7 +766,7 @@
                                         </div>
                         
                                         <!-- Page 3 -->
-                                        <div class="course-container cs-page hidden" data-page="3">
+                                        <div class="course-container cs-page cs-course hidden" data-page="3">
                                             <div class="course-item">
                                                 <div class="course-content">
                                                     <i class="fas fa-network-wired text-purple-400"></i>
@@ -769,9 +780,9 @@
                                                 <div class="hover-glow"></div>
                                             </div>
                                         </div>
-                                        <div class="course-container cs-page hidden" data-page="3">
+                                        <div class="course-container cs-page cs-course hidden" data-page="3">
                                             <div class="course-item">
-                                                <div class="course-content">
+                                                <div class="course-content" style="font-size: 14px;">
                                                     <i class="fas fa-laptop-code text-purple-400"></i>
                                                     <span>Operating Systems And Systems Programming</span>
                                                 </div>
@@ -783,7 +794,7 @@
                                                 <div class="hover-glow"></div>
                                             </div>
                                         </div>
-                                        <div class="course-container cs-page hidden" data-page="3">
+                                        <div class="course-container cs-page cs-course hidden" data-page="3">
                                             <div class="course-item">
                                                 <div class="course-content">
                                                     <i class="fas fa-shield-alt text-purple-400"></i>
@@ -954,6 +965,48 @@
 
             .course-container:hover {
                 animation: pulseGlow 2s infinite;
+            }
+
+            /* Update the course description popup styles */
+            .course-description {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 300px;
+                padding: 1rem;
+                background: rgba(17, 24, 39, 0.95);
+                border: 1px solid rgba(59, 130, 246, 0.2);
+                border-radius: 0.5rem;
+                color: #e5e7eb;
+                font-size: 0.875rem;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                z-index: 20;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+                will-change: transform, opacity;
+            }
+
+            /* EE courses - description appears on the right */
+            .ee-course .course-description {
+                left: 110%;
+            }
+
+            .ee-course:hover .course-description {
+                opacity: 1;
+                visibility: visible;
+                left: 105%;
+            }
+
+            /* CS courses - description appears on the left */
+            .cs-course .course-description {
+                right: 110%;
+            }
+
+            .cs-course:hover .course-description {
+                opacity: 1;
+                visibility: visible;
+                right: 105%;
             }
 
             /* Responsive adjustments */
