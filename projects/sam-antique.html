@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sam Antique Store Project - Talal Alshamalia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(45deg, #1e293b, #0f172a, #111827);
+            background-size: 400% 400%;
+            animation: gradient-flow 15s ease infinite;
+        }
+
+        @keyframes gradient-flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .project-content {
+            background: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="text-white min-h-screen">
+    <nav class="fixed top-0 w-full bg-gray-900/90 backdrop-blur-lg z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="/" class="text-blue-400 hover:text-blue-300 transition flex items-center space-x-2">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Back to Portfolio</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-6 pt-24 pb-16">
+        <div class="project-content rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+                Sam Antique Store
+            </h1>
+
+            <section class="mb-12">
+                <h2 class="text-2xl font-semibold mb-4 text-blue-300">Overview</h2>
+                <p class="text-gray-300 leading-relaxed">
+                    Sam Antique is a web application designed for an antique store, providing both a customer-facing interface 
+                    and an admin dashboard for managing the store's inventory. The application allows users to browse a curated 
+                    collection of antiques, while the admin dashboard facilitates item management, including adding, editing, 
+                    and deleting items.
+                </p>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="text-2xl font-semibold mb-4 text-blue-300">Live Demo</h2>
+                <div class="flex flex-wrap gap-4">
+                    <a href="https://hussam.alshamalia.net/" target="_blank" class="inline-flex items-center px-4 py-2 bg-blue-500/20 hover:bg-blue-500/30 rounded-lg text-blue-300 transition">
+                        <i class="fas fa-external-link-alt mr-2"></i>
+                        View Live Website
+                    </a>
+                    <a href="https://github.com/Talal2003/hussam" target="_blank" class="inline-flex items-center px-4 py-2 bg-gray-700/50 hover:bg-gray-700/70 rounded-lg text-gray-300 transition">
+                        <i class="fab fa-github mr-2"></i>
+                        View Source Code
+                    </a>
+                </div>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="text-2xl font-semibold mb-4 text-blue-300">Key Features</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-semibold text-purple-300">Customer Interface</h3>
+                        <ul class="list-disc list-inside text-gray-300 space-y-2">
+                            <li>Dynamic Item Display</li>
+                            <li>Smooth Navigation</li>
+                            <li>Responsive Design</li>
+                        </ul>
+                    </div>
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-semibold text-purple-300">Admin Dashboard</h3>
+                        <ul class="list-disc list-inside text-gray-300 space-y-2">
+                            <li>Secure Authentication</li>
+                            <li>Item Management</li>
+                            <li>Image Upload and Preview</li>
+                            <li>Real-time Updates</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="text-2xl font-semibold mb-4 text-blue-300">Technical Stack</h2>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-gray-800/50 p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-3 text-purple-300">Frontend</h3>
+                        <ul class="text-gray-300 space-y-2">
+                            <li class="flex items-center">
+                                <i class="fab fa-html5 mr-2"></i>HTML5
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fab fa-css3-alt mr-2"></i>CSS3
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fab fa-js mr-2"></i>JavaScript
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-800/50 p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-3 text-purple-300">Backend</h3>
+                        <ul class="text-gray-300 space-y-2">
+                            <li class="flex items-center">
+                                <i class="fab fa-node-js mr-2"></i>Node.js Server
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-database mr-2"></i>MySQL Database
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-file-upload mr-2"></i>File Upload System
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-800/50 p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-3 text-purple-300">Development & Deployment</h3>
+                        <ul class="text-gray-300 space-y-2">
+                            <li class="flex items-center">
+                                <i class="fas fa-shield-alt mr-2"></i>Authentication System
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-network-wired mr-2"></i>Port Forwarding
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-server mr-2"></i>Web Hosting
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="text-2xl font-semibold mb-4 text-blue-300">Implementation Details</h2>
+                <div class="space-y-6 text-gray-300">
+                    <div class="bg-gray-800/50 p-6 rounded-lg mb-6">
+                        <h3 class="text-xl font-semibold mb-3 text-purple-300">Frontend Architecture</h3>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>Responsive design using modern CSS techniques</li>
+                            <li>Dynamic content loading with JavaScript</li>
+                            <li>Client-side form validation for admin dashboard</li>
+                            <li>Image preview functionality for item uploads</li>
+                            <li>Smooth animations and transitions for better UX</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gray-800/50 p-6 rounded-lg mb-6">
+                        <h3 class="text-xl font-semibold mb-3 text-purple-300">Backend Integration</h3>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>Node.js runtime environment for server-side operations</li>
+                            <li>MySQL database for storing item information and admin credentials</li>
+                            <li>Secure authentication system for admin access</li>
+                            <li>Port forwarding configuration for local-to-online connectivity</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gray-800/50 p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-3 text-purple-300">Key Files Structure</h3>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>index.html - Main customer-facing interface</li>
+                            <li>admin-login.html - Secure admin authentication page</li>
+                            <li>admin-dashboard.html - Item management interface</li>
+                            <li>styles.css - Custom styling and animations</li>
+                            <li>script.js - Core functionality and interactions</li>
+                            <li>database.js - Database operations</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="text-2xl font-semibold mb-4 text-blue-300">Challenges and Solutions</h2>
+                <div class="space-y-6 text-gray-300">
+                    <div class="bg-gray-800/50 p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-3 text-purple-300">Local-to-Online Connectivity</h3>
+                        <p class="mb-4">
+                            One of the main challenges was connecting the local MySQL database with the online frontend. 
+                            This was solved by implementing port forwarding, allowing secure communication between the 
+                            hosted frontend and the local backend server.
+                        </p>
+                    </div>
+                    <div class="bg-gray-800/50 p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-3 text-purple-300">Image Management</h3>
+                        <p class="mb-4">
+                            Handling image uploads and previews required careful consideration of file size limits and 
+                            format validation. A custom preview system was implemented to provide immediate feedback 
+                            during the upload process.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-semibold mb-4 text-blue-300">Future Enhancements</h2>
+                <ul class="list-disc list-inside text-gray-300 space-y-2">
+                    <li>User Authentication for Customers</li>
+                    <li>Enhanced Admin Analytics</li>
+                    <li>SEO Optimization</li>
+                </ul>
+            </section>
+        </div>
+    </main>
+</body>
+</html> 
