@@ -81,13 +81,17 @@
 
         .project-card {
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            border: 1px solid rgba(59, 130, 246, 0.2);
             background: linear-gradient(145deg, rgba(31, 41, 55, 0.8), rgba(17, 24, 39, 0.6));
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transform-style: preserve-3d; /* Add this to prevent blur issues */
+            backface-visibility: hidden; /* Add this to prevent blur issues */
+            perspective: 1000px; /* Add this to prevent blur issues */
         }
 
         .project-card:hover {
-            transform: scale(1.05) rotate(2deg);
-            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.3);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+            border-color: rgba(59, 130, 246, 0.4);
         }
 
         .profile-image {
@@ -120,17 +124,6 @@
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-        }
-
-        .project-card {
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            background: linear-gradient(145deg, rgba(31, 41, 55, 0.8), rgba(17, 24, 39, 0.6));
-            border: 1px solid rgba(59, 130, 246, 0.2);
-        }
-
-        .project-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.3);
         }
 
         .skill-bar {
@@ -396,18 +389,6 @@
                 padding-left: 0.5rem;
                 padding-right: 0.5rem;
             }
-        }
-
-        .project-card {
-            background: linear-gradient(145deg, rgba(31, 41, 55, 0.8), rgba(17, 24, 39, 0.6));
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
-            border-color: rgba(59, 130, 246, 0.4);
         }
 
         .line-clamp-3 {
@@ -1070,13 +1051,13 @@
             }
         </style>
 
-        <!-- Replace the existing projects section with this code -->
+        <!-- Replace the existing projects section with this updated version -->
         <section id="projects" class="my-16">
             <h2 class="text-4xl font-bold text-center mb-12 section-title">Featured Projects</h2>
-            <div class="max-w-3xl mx-auto px-4">
-                <!-- Project Card -->
+            <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-8">
+                <!-- Sam Antique Store Project Card -->
                 <div class="project-card rounded-xl p-8 text-center transform transition-all duration-300 hover:scale-102 group 
-                            bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm
+                            bg-gradient-to-br from-gray-800/50 to-gray-900/50
                             border border-blue-500/10 hover:border-blue-500/30
                             shadow-lg hover:shadow-blue-500/10">
                     <div class="relative mb-8">
@@ -1087,7 +1068,7 @@
                         </div>
                     </div>
                     <h3 class="text-3xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                        Sam Antique Store
+                        Antique Store
                     </h3>
                     <p class="text-gray-300 mb-6 text-lg max-w-2xl mx-auto leading-relaxed">
                         A full-stack web application for an antique store featuring a customer interface and admin dashboard with MySQL database integration.
@@ -1123,6 +1104,55 @@
                         <span class="px-4 py-2 rounded-full bg-blue-500/5 hover:bg-blue-500/10 
                                    text-blue-300 text-sm font-medium transition-all duration-300
                                    border border-blue-500/10 hover:border-blue-500/20">MySQL</span>
+                    </div>
+                </div>
+
+                <!-- ChatBot Project Card -->
+                <div class="project-card rounded-xl p-8 text-center transform transition-all duration-300 hover:scale-102 group 
+                            bg-gradient-to-br from-gray-800/50 to-gray-900/50
+                            border border-purple-500/10 hover:border-purple-500/30
+                            shadow-lg hover:shadow-purple-500/10">
+                    <div class="relative mb-8">
+                        <div class="flex justify-center">
+                            <div class="p-6 rounded-full bg-purple-500/5 group-hover:bg-purple-500/10 transition-all duration-300">
+                                <i class="fas fa-robot text-6xl text-purple-400 transform group-hover:scale-110 group-hover:text-purple-300 transition-all duration-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+                        ChatBot
+                    </h3>
+                    <p class="text-gray-300 mb-6 text-lg max-w-2xl mx-auto leading-relaxed">
+                        A Discord bot featuring AI chat powered by Google's Gemini Pro, music playback, and a ticket system for support.
+                    </p>
+                    <div class="flex justify-center space-x-6 mb-8">
+                        <a href="/projects/ai-chatbot.html" 
+                           class="px-6 py-3 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 text-purple-300 hover:text-purple-200 
+                          flex items-center transition-all duration-300 group/btn">
+                            <span>View Details</span>
+                            <i class="fas fa-arrow-right ml-2 transform group-hover/btn:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="https://github.com/Talal2003/3ST_Discord_Bot" 
+                           target="_blank" 
+                           class="px-6 py-3 rounded-lg bg-gray-700/50 hover:bg-gray-700/70 text-gray-300 hover:text-gray-200 
+                          flex items-center transition-all duration-300 group/btn">
+                            <span>Source Code</span>
+                            <i class="fab fa-github ml-2 transform group-hover/btn:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <span class="px-4 py-2 rounded-full bg-purple-500/5 hover:bg-purple-500/10 
+                                   text-purple-300 text-sm font-medium transition-all duration-300
+                                   border border-purple-500/10 hover:border-purple-500/20">Node.js</span>
+                        <span class="px-4 py-2 rounded-full bg-purple-500/5 hover:bg-purple-500/10 
+                                   text-purple-300 text-sm font-medium transition-all duration-300
+                                   border border-purple-500/10 hover:border-purple-500/20">Discord.js</span>
+                        <span class="px-4 py-2 rounded-full bg-purple-500/5 hover:bg-purple-500/10 
+                                   text-purple-300 text-sm font-medium transition-all duration-300
+                                   border border-purple-500/10 hover:border-purple-500/20">Google AI</span>
+                        <span class="px-4 py-2 rounded-full bg-purple-500/5 hover:bg-purple-500/10 
+                                   text-purple-300 text-sm font-medium transition-all duration-300
+                                   border border-purple-500/10 hover:border-purple-500/20">YouTube API</span>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3ST Discord Bot - Talal Alshamalia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(45deg, #1e293b, #0f172a, #111827);
+            background-size: 400% 400%;
+            animation: gradient-flow 15s ease infinite;
+        }
+
+        @keyframes gradient-flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .project-content {
+            background: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .code-block {
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: monospace;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body class="text-white min-h-screen">
+    <nav class="fixed top-0 w-full bg-gray-900/90 backdrop-blur-lg z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="/" class="text-blue-400 hover:text-blue-300 transition flex items-center space-x-2">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Back to Portfolio</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-6 pt-24 pb-16">
+        <div class="project-content rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+                3ST Discord Bot
+            </h1>
+
+            <section class="mb-12">
+                <h2 class="text-2xl font-semibold mb-4 text-blue-300">Overview</h2>
+                <p class="text-gray-300 leading-relaxed">
+                    3ST is a Discord bot that combines multiple functionalities including AI-powered chat using Google's 
+                    Gemini Pro, music playback features, and a ticket system for support. The bot demonstrates advanced integration 
+                    of various APIs and services while maintaining a user-friendly interface.
+                </p>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="text-2xl font-semibold mb-4 text-blue-300">Try It Out</h2>
+                <div class="flex flex-wrap gap-4">
+                    <a href="https://discord.com/oauth2/authorize?client_id=766297841198170133&permissions=8&integration_type=0&scope=bot" 
+                       target="_blank" 
+                       class="inline-flex items-center px-4 py-2 bg-blue-500/20 hover:bg-blue-500/30 rounded-lg text-blue-300 transition">
+                        <i class="fab fa-discord mr-2"></i>
+                        Add Bot to Server
+                    </a>
+                    <a href="https://github.com/Talal2003/3ST_Discord_Bot" 
+                       target="_blank" 
+                       class="inline-flex items-center px-4 py-2 bg-gray-700/50 hover:bg-gray-700/70 rounded-lg text-gray-300 transition">
+                        <i class="fab fa-github mr-2"></i>
+                        View Source Code
+                    </a>
+                </div>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="text-2xl font-semibold mb-4 text-blue-300">Key Features</h2>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-gray-800/50 p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-3 text-purple-300">
+                            <i class="fas fa-robot mr-2"></i>AI Chat
+                        </h3>
+                        <ul class="text-gray-300 space-y-2">
+                            <li>Gemini Pro Integration</li>
+                            <li>Custom Personality</li>
+                            <li>Stream Responses</li>
+                            <li>Error Handling</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-800/50 p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-3 text-purple-300">
+                            <i class="fas fa-music mr-2"></i>Music System
+                        </h3>
+                        <ul class="text-gray-300 space-y-2">
+                            <li>YouTube Integration</li>
+                            <li>Queue Management</li>
+                            <li>Playback Controls</li>
+                            <li>Search Support</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-800/50 p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-3 text-purple-300">
+                            <i class="fas fa-ticket-alt mr-2"></i>Ticket System
+                        </h3>
+                        <ul class="text-gray-300 space-y-2">
+                            <li>Auto Channel Creation</li>
+                            <li>React Controls</li>
+                            <li>Admin Management</li>
+                            <li>Auto Cleanup</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="text-2xl font-semibold mb-4 text-blue-300">Technical Architecture</h2>
+                <div class="space-y-6">
+                    <div class="bg-gray-800/50 p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-3 text-purple-300">Core Components</h3>
+                        <ul class="list-disc list-inside text-gray-300 space-y-2">
+                            <li>Main Application</li>
+                            <li>Command Handler System</li>
+                            <li>Event Management</li>
+                            <li>Environment Configuration</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="text-2xl font-semibold mb-4 text-blue-300">Implementation Details</h2>
+                <div class="space-y-6">
+                    <div class="bg-gray-800/50 p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-3 text-purple-300">Dependencies</h3>
+                        <ul class="list-disc list-inside text-gray-300 space-y-2">
+                            <li>discord.js: Discord API interface</li>
+                            <li>@google/generative-ai: Google's Generative AI integration</li>
+                            <li>ytdl-core: YouTube download functionality</li>
+                            <li>yt-search: YouTube search capability</li>
+                            <li>dotenv: Environment variable management</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gray-800/50 p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-3 text-purple-300">Security Measures</h3>
+                        <ul class="list-disc list-inside text-gray-300 space-y-2">
+                            <li>Token security through environment variables</li>
+                            <li>Permission-based command access</li>
+                            <li>Admin-only ticket management</li>
+                            <li>Comprehensive error handling and logging</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="text-2xl font-semibold mb-4 text-blue-300">Setup Instructions</h2>
+                <div class="space-y-4">
+                    <div class="bg-gray-800/50 p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-3 text-purple-300">Prerequisites</h3>
+                        <ul class="list-disc list-inside text-gray-300">
+                            <li>Node.js installed</li>
+                            <li>Discord Developer account</li>
+                            <li>Google AI API access</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gray-800/50 p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-3 text-purple-300">Installation</h3>
+                        <div class="code-block text-gray-300">npm install discord.js @google/generative-ai dotenv ytdl-core yt-search</div>
+                    </div>
+
+                    <div class="bg-gray-800/50 p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-3 text-purple-300">Environment Setup</h3>
+                        <div class="code-block text-gray-300">DISCORD_TOKEN=your_discord_token
+PREFIX=3
+API_KEY=your_google_ai_api_key</div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-semibold mb-4 text-blue-300">Future Enhancements</h2>
+                <ul class="list-disc list-inside text-gray-300 space-y-2">
+                    <li>Additional music features including volume control and playlist support</li>
+                    <li>Enhanced AI chat capabilities with improved context handling and personalization</li>
+                    <li>Comprehensive command documentation accessible through .commands</li>
+                </ul>
+            </section>
+        </div>
+    </main>
+</body>
+</html> 
